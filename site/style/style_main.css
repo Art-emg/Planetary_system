@@ -1,0 +1,65 @@
+.slider{
+	margin-top:30px;
+
+}
+
+.fotorama { 
+	
+	color: #EDEDED;
+	font-size: 18px;
+	text-align:center;
+	margin-bottom: 40px;
+    
+
+}
+.foto-item{
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+.cit{
+	font-size:24px;
+	margin-top: 300px;
+
+}
+
+.cit-hr{
+ 	border: 0;
+    height: 3px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+
+.cit-cap{
+	font-style: italic;
+}
+
+.foto-item{
+	margin-top:0;
+	height:150px;
+	text-align: bottom; 
+}
+
+.citata {
+
+margin-top: 30px;
+color: #231E28;
+padding: 30px 30px 30px 60px;
+border-left: 8px solid #CBDDE7;
+position: relative;
+background: #FAF8EB;
+font-family: 'Lato', sans-serif;
+font-weight: 300;
+}
+.citata:before{
+
+content: "\201C";
+font-family: Arial;
+color: #CBDDE7;
+font-size: 70px;
+position: absolute;
+left: 15px;
+top: 5px;
+}
+.citata p {
+font-style: italic;
+font-size: 24px;
+margin-top: 0;  
+}

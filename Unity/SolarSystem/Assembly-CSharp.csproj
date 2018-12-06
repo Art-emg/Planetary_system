@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A3C94A80-56C6-2BBC-15D2-D1B8DAC2C5E5}</ProjectGuid>
+    <ProjectGuid>{DB7062D2-755C-EF7A-B5EC-D8E8C8F3F01B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,21 +55,19 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraRotateAround.cs" />
      <Compile Include="Assets\Scripts\CelestialBody.cs" />
-     <Compile Include="Assets\Scripts\DrawHighlight.cs" />
-     <Compile Include="Assets\Scripts\DrawPath.cs" />
      <Compile Include="Assets\Scripts\SolarSystem.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>C:/Users/User/Desktop/SolarSystem1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ <HintPath>D:/Dropbox/Planetary_system/Unity/SolarSystem/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/User/Desktop/SolarSystem1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>D:/Dropbox/Planetary_system/Unity/SolarSystem/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/User/Desktop/SolarSystem1/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>D:/Dropbox/Planetary_system/Unity/SolarSystem/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/User/Desktop/SolarSystem1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>D:/Dropbox/Planetary_system/Unity/SolarSystem/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

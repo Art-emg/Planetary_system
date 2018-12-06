@@ -21,5 +21,6 @@ public class CelestialBody : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+        
 	}
 }

@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using UnityEngine.Events;
 
 public class UIController : MonoBehaviour {
 
@@ -18,7 +16,7 @@ public class UIController : MonoBehaviour {
 
 	public void EarthImpulse_EndEdit(string newStr)
 	{
-		solarSystem.startMercuryImpulse = int.Parse(newStr);
+		solarSystem.startMercuryImpulse = float.Parse(newStr);
 	}
 
     public void Impulse_EndEdit(string newStr)

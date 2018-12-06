@@ -29,6 +29,9 @@ public class SolarSystem : MonoBehaviour {
 
 	void Awake()
 	{
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+
 		celestialBodies = new List<CelestialBody>(FindObjectsOfType<CelestialBody>());
 	}
 	void Start()
@@ -53,6 +56,7 @@ public class SolarSystem : MonoBehaviour {
 		}
 		
 	}
+
 	public void ResetWorld()
 	{
 		for (int i = 0; i < celestialBodies.Count; i++)
@@ -87,9 +91,11 @@ public class SolarSystem : MonoBehaviour {
 
         Time.timeScale = TimeSpeed;
 
+        sun.transform.position = Vector3.zero;
+
+
 		float gravityConst = 6.67f * Mathf.Pow(10.0f, gravityConstOrder);
        
-
 		for (int i = 0; i < celestialBodies.Count; i++)
 		{
 			Rigidbody first = celestialBodies[i].Rigidbody;

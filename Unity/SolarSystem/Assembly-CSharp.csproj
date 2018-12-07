@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\CameraRotateAround.cs" />
      <Compile Include="Assets\Scripts\CelestialBody.cs" />
      <Compile Include="Assets\Scripts\SolarSystem.cs" />
+     <Compile Include="Assets\Scripts\UI_SolarSystem.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>D:/Dropbox/Planetary_system/Unity/SolarSystem/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

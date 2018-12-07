@@ -27,7 +27,6 @@ public class UIController : MonoBehaviour {
     //////////////////////////
     public void SpeedSystem_Input(float speed)
     {
-
         solarSystem.TimeSpeed = speed;
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class CameraRotateAround : MonoBehaviour {
 
-	public Transform target;
+    public Transform target;
 	public Vector3 offset;
 	public float sensitivity = 3; // чувствительность мышки
 	public float limit = 80;     // ограничение вращения по Y

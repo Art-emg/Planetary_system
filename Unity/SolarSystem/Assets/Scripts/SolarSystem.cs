@@ -29,15 +29,13 @@ public class SolarSystem : MonoBehaviour {
 
 	void Awake()
 	{
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-
-		celestialBodies = new List<CelestialBody>(FindObjectsOfType<CelestialBody>());
+        celestialBodies = new List<CelestialBody>(FindObjectsOfType<CelestialBody>());
 	}
 	void Start()
 	{
 		SaveDefaults();
 		ResetWorld();
+        
 	}
 
     public void SpeedSystem(int speed)

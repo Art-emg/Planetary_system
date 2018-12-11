@@ -10,14 +10,23 @@ public class SolarSystem : MonoBehaviour {
 	public Rigidbody venus;//
     public Rigidbody earth;
     public Rigidbody mars;
+    public Rigidbody jupiter;
+    public Rigidbody saturn;
+    public Rigidbody uranus;
+    public Rigidbody neptune;
 
 
-    public float gravityConstOrder = -1.0f;
+    public float gravityConstOrder = -11.0f;
+    public float gravityConstValue = 6.67408f;
 
-	public float startMercuryImpulse = 48;//
+    public float startMercuryImpulse = 48;//
 	public float startVenusImpulse = 25;
 	public float startEarthImpulse = 25;
 	public float startMarsImpulse = 25;
+	public float startJupiterImpulse = 25;
+	public float startSaturnImpulse = 25;
+	public float startUranusImpulse = 25;
+	public float startNeptuneImpulse = 25;
 
     public float TimeSpeed= 1f;//
 
@@ -78,6 +87,18 @@ public class SolarSystem : MonoBehaviour {
         mars.AddForce(Vector3.forward * startMarsImpulse, ForceMode.Impulse);
         mars.AddRelativeTorque(Vector3.up * 1, ForceMode.Impulse);
 
+        jupiter.AddForce(Vector3.forward * startJupiterImpulse, ForceMode.Impulse);
+        jupiter.AddRelativeTorque(Vector3.up * 1, ForceMode.Impulse);
+
+        saturn.AddForce(Vector3.forward * startSaturnImpulse, ForceMode.Impulse);
+        saturn.AddRelativeTorque(Vector3.up * 1, ForceMode.Impulse);
+
+        uranus.AddForce(Vector3.forward * startUranusImpulse, ForceMode.Impulse);
+        uranus.AddRelativeTorque(Vector3.up * 1, ForceMode.Impulse);
+
+        neptune.AddForce(Vector3.forward * startNeptuneImpulse, ForceMode.Impulse);
+        neptune.AddRelativeTorque(Vector3.up * 1, ForceMode.Impulse);
+
         /**
 		ForceMode.Force == Force per second  
 		ForceMode.Impulse == Force per frame
@@ -92,7 +113,7 @@ public class SolarSystem : MonoBehaviour {
         sun.transform.position = Vector3.zero;
 
 
-		float gravityConst = 6.67f * Mathf.Pow(10.0f, gravityConstOrder);
+		float gravityConst = gravityConstValue * Mathf.Pow(10.0f, (gravityConstOrder/11));
        
 		for (int i = 0; i < celestialBodies.Count; i++)
 		{

@@ -1,4 +1,4 @@
-я@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display+SC');
 @import url('https://fonts.googleapis.com/css?family=Caveat:400,700|Vast+Shadow');
 
@@ -56,10 +56,11 @@ text-decoration: none !important;
 .menu_inside{
 	width: 1000px;
 	margin:auto;
-	
+	z-index: 200;
 }
 
 .menu{
+	z-index: 10000;
 	font-family: 'Playfair Display SC', serif;
 	background-color: white;
 	width: 100%;
@@ -111,7 +112,7 @@ text-decoration: none !important;
 }
 
 .fixed{
-	
+	z-index: 200;
 	position: fixed;
 	top:0;
 	opacity: 0.94;

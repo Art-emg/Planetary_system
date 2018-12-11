@@ -1,15 +1,6 @@
 ﻿/*оформление страниц*/
-body{
-	background-color:#333;
-	font-family: Arial, Helvetica, sans-serif; 
-	font-size: 20px; 
-	color: #FFFFFF; 
-}
-p{
-	margin:0px;
-	text-indent:30px;
 
-}
+
 input{
 	font-size:20px;
 	width:100%;

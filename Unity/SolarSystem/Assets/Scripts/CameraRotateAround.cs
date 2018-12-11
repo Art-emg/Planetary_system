@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraRotateAround : MonoBehaviour {
 
@@ -14,7 +11,10 @@ public class CameraRotateAround : MonoBehaviour {
 	public float zoomMax = 10; // макс. увеличение
 	public float zoomMin = 3; // мин. увеличение
 	private float X, Y;
+
+    public Text camTargetName;
     Camera camera;
+    public Slider sliderZoom;
 
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
@@ -26,7 +26,7 @@ public class CameraRotateAround : MonoBehaviour {
 
         limit = Mathf.Abs(limit);
 		if(limit > 90) limit = 90;
-		offset = new Vector3(offset.x, offset.y, -Mathf.Abs(zoomMax)/2);
+		offset = new Vector3(offset.x, offset.y, -Mathf.Abs((zoomMax/4)));
 		transform.position = target.position + offset;
 	}
 
@@ -38,7 +38,9 @@ public class CameraRotateAround : MonoBehaviour {
                 offset.z += zoom;
             else if (Input.GetAxis("Mouse ScrollWheel") < 0)
                 offset.z -= zoom;
+              
             offset.z = Mathf.Clamp(offset.z, -Mathf.Abs(zoomMax), -Mathf.Abs(zoomMin));
+            sliderZoom.value = -offset.z; 
 
         if (Input.GetMouseButton(1))
         {
@@ -64,6 +66,7 @@ public class CameraRotateAround : MonoBehaviour {
             if (Physics.Raycast(ray, out hit))
             {
                 target = hit.transform;
+                camTargetName.text = target.name;
 
             }
         }

@@ -11,9 +11,9 @@ public class UI_SolarSystem : MonoBehaviour {
     public Text targetName;
     public InputField mp;
     public Text SpeedValue;
-
     public Slider slider;
 
+    public InputField GravitiConstValueInput, GravityConstOrderInput;
 
     public void ResetWorld_Click()
     {
@@ -23,13 +23,24 @@ public class UI_SolarSystem : MonoBehaviour {
     public void SpeedSystem_Input()
     {
         solarSystem.TimeSpeed = slider.value;
-        SpeedValue.text = "x" + slider.value.ToString();
+        SpeedValue.text = "Скорость системы: x" + slider.value.ToString();
     }
 
     public void mass_Input(string mass)
     {
         
     }
+
+    public void gravitConstVal_Input(string value)
+    {
+        solarSystem.gravityConstValue = float.Parse(GravitiConstValueInput.text);
+    }
+
+    public void gravitConstOrder_Input(string value)
+    {
+        solarSystem.gravityConstOrder = float.Parse(GravityConstOrderInput.text);
+    }
+
 
     public void Time_Pause()
     {
@@ -41,7 +52,10 @@ public class UI_SolarSystem : MonoBehaviour {
 
     public void Start()
     {
-        SpeedValue.text = "x"+slider.value.ToString();
+        SpeedValue.text = "Скорость системы: x" + slider.value.ToString();
+
+        GravitiConstValueInput.text = solarSystem.gravityConstValue.ToString();
+        GravityConstOrderInput.text = solarSystem.gravityConstOrder.ToString();
     }
 
 	void FixedUpdate () {

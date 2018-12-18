@@ -37,3 +37,21 @@ document.getElementById('uranus').addEventListener('click',function(){
 document.getElementById("neptune").addEventListener('click',function(){
   document.getElementById('soundNeptune').play()
 })
+
+var flagAnim = true;
+function pausedAnim(){
+	if(flagAnim){
+		$("li").css("-webkit-animation-play-state", "paused");
+       	$("span").css("-webkit-animation-play-state", "paused");
+       document.getElementById("imgPause").src = "images/play.png";
+        flagAnim = false;
+	}
+	else{
+		$("li").css("-webkit-animation-play-state", "running");
+       	$("span").css("-webkit-animation-play-state", "running");
+       	document.getElementById("imgPause").src ="images/pause.png";
+        flagAnim = true;
+	}
+
+}
+

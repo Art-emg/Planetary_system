@@ -56,9 +56,9 @@
 					<div class="citata">
 					  <p>Космос — это космос. Ничего похожего на Земле нет. Кроме данного симулятора пленетной системы (Геннадий Падалка + Гришанович Артём)</p>
 					</div>
+				
 
-
-							<!-- Тут мы добавляем презинтацию через Google Docs -->
+							
 				<div align="center" style="margin: 30px 0">
 					<h1>Курсовой проект на тему "Солнечная система"</h1>
 					<h3>Выполнил: Гришанович Артём</h3>
@@ -122,11 +122,24 @@
  			<div id="messages"></div>
 
 			<div id="dialog" class="dialog" style="margin-left: -25px;">
-				<div class="label" onclick="toggleDialog()">Нажми, чтобы спросить!</div>
+				<div class="label" id ='textOpenOrClose' onclick="toggleDialog()">Нажми, чтобы спросить!</div>
 				<div class="header">История:</div>
 				<div class="history" id="history"></div>
-				<div class="question"><input id="Qdialog" placeholder="Введите вопрос" style="background-image: url(&quot;data:image/svg+xml;utf8,&lt;svg version=\&quot;1.1\&quot; id=\&quot;Layer_1\&quot;  xmlns:sketch=\&quot;http://www.bohemiancoding.com/sketch/ns\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; xmlns:xlink=\&quot;http://www.w3.org/1999/xlink\&quot;  x=\&quot;0px\&quot; y=\&quot;0px\&quot; viewBox=\&quot;0 0 112 112\&quot; enable-background=\&quot;new 0 0 112 112\&quot; xml:space=\&quot;preserve\&quot;&gt; &lt;g id=\&quot;tuts\&quot; sketch:type=\&quot;MSPage\&quot;&gt; &lt;g id=\&quot;mic_ff\&quot; sketch:type=\&quot;MSLayerGroup\&quot;&gt; &lt;g id=\&quot;speechkit_vector-9\&quot; transform=\&quot;translate(39.000000, 32.000000)\&quot;  sketch:type=\&quot;MSShapeGroup\&quot; opacity=\&quot;0.9\&quot;&gt; &lt;path id=\&quot;Shape\&quot; d=\&quot;M17,4c2.8,0,5,2.3,5,5.2v15.6c0,2.9-2.2,5.2-5,5.2s-5-2.3-5-5.2V9.2C12,6.3,14.2,4,17,4 M17,0 c-5,0-9,4.1-9,9.2v15.6c0,5.1,4,9.2,9,9.2s9-4.1,9-9.2V9.2C26,4.1,22,0,17,0L17,0z\&quot;/&gt; &lt;path id=\&quot;Shape_1_\&quot;  d=\&quot;M34,23v1.1C34,34,26.4,42,17,42S0,34,0,24.1V23h4v0.1C4,31.3,9.8,38,17,38s13-6.7,13-14.9V23H34z\&quot;/&gt; &lt;rect id=\&quot;Rectangle-311\&quot; x=\&quot;15\&quot; y=\&quot;41\&quot; width=\&quot;4\&quot; height=\&quot;10\&quot;/&gt; &lt;/g&gt; &lt;/g&gt; &lt;/g&gt; &lt;/svg&gt;&quot;); background-repeat: no-repeat; background-position: right center; cursor: text;"><br><button onclick="ask(&quot;Qdialog&quot;)">Спросить</button></div>
+				<div class="question"><input id="Qdialog" placeholder="Введите вопрос"><br>
+					<div id="commBtn">
+						<button id="buttonAsk" onclick="ask(&quot;Qdialog&quot;)">Спросить</button>
+						<!-- <button id="buttonSpeakAsk" onclick="addSpeak()">S</button> -->
+						<!-- <button id="buttonSpeakAskOff" onclick="delSpeak()">D</button>					 -->
+						<button id="buttonSpeakOnOff" onclick="speak()"><img src="images/speak.png" id="speakPNG"></button>					
+													  
+							    
+							  
+	
+
+					</div>
+				</div>
 			</div>
+
 		<!-- Конец модуля -->
 
 

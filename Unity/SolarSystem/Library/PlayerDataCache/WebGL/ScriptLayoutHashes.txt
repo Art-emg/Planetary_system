@@ -1,6 +1,6 @@
 WebGL
 PlayerPath?
-D:/Dropbox/Planetary_system/buildWG
+D:/Dropbox/Planetary_system/WebGL
 SceneListBegin?
 Assets/Scripts/main.unity
 SceneListEnd?

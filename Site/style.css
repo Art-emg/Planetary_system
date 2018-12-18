@@ -220,3 +220,13 @@ transition: ease-out  .5s;
 
 /*end up button*/
 
+
+/*Video player DIV*/
+
+.videoPlayer{
+	width: 800px;
+	margin: 0 auto;
+}
+
+
+/**/

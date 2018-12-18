@@ -10,11 +10,33 @@
 		 <script type="text/javascript" src="dialog_module/webspeechkit-settings.js"></script>
  		<script src="dialog_module/active.script-swf.js"></script>
  		 <link href="dialog_module/styleMod.css" type="text/css" rel="stylesheet">
+ 		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- всё  -->
 
 
 		<link href="style.css" type="text/css" rel= "stylesheet">     	
 		<link href="libs/bootstrap/css/bootstrap.min.css" type="text/css" rel= "stylesheet">
+
+		<style type="text/css">
+			.btn {
+				margin: 15px;
+			  background-color: DodgerBlue;
+			  border: none;
+			  color: white;
+			  padding: 12px 30px;
+			  cursor: pointer;
+			  font-size: 30px;
+			}
+			.btn p{
+				font-size: 18px;
+				color: white;
+			}
+
+			/* Darker background on mouse-over */
+			.btn:hover {
+			  background-color: RoyalBlue;
+			}
+		</style>
 
 
 		
@@ -57,7 +79,10 @@
 			<div class="block_main_inside" style="min-height: 400px;">
 				<div class="content">
 
-					<h1 id="main_h1" >Симулятор находится в папку build, так как мой компьтер отказывается билдить в WebGL</h1>
+					<h1 id="main_h1" >Симулятор Солнечной системы</h1>
+
+					<a href="Solar System.rar" download> <button class="btn"><i class="fa fa-download"></i> Скачать<p>Solar System.rar</p></button></a>
+					
 		
 
 					<div class="testing">
@@ -122,50 +147,30 @@
 
 		<!-- Диалоговый модуль -->
 
- 			<div id="messages"></div>
+
 				
-			<!-- <div id="alert1" style="display:none">
-				<div class="bg" onclick="hide(&quot;alert1&quot;)">&nbsp;</div>
-				<div class="alert_message">
-					Вы слишком долго смотрите текущую страницу. Что-нибудь не понятно?<br>
-					<embed src="1.swf" width="300" height="300" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" id="movie1" play="true">
-					<br><input id="Q1" placeholder="Введите вопрос"><br><button onclick="ask(&quot;Q1&quot;)">Спросить</button>
-				</div>
-			</div>
-			<div id="alert2" style="display:none">
-				<div class="bg" onclick="hide(&quot;alert2&quot;)">&nbsp;</div>
-				<div class="alert_message">
-					Вы слишком быстро листаете страницы. Что-нибудь не понятно?<br>
-					<embed src="1a.swf" width="300" height="300" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" id="movie2" play="true">
-					<br><input id="Q2" placeholder="Введите вопрос"><br><button onclick="ask(&quot;Q2&quot;)">Спросить</button>
-				</div>
-			</div>
-			<div id="alert3" style="display:none">
-				<div class="bg" onclick="hide(&quot;alert3&quot;)">&nbsp;</div>
-				<div class="alert_message">
-					Вы вернулись на ту страницу, которую недавно читали. Что-нибудь ищете?<br>
-					<embed src="1b.swf" width="300" height="300" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" id="movie3" play="true">
-					<br><input id="Q3" placeholder="Введите вопрос"><br><button onclick="ask(&quot;Q3&quot;)">Спросить</button>
-				</div>
-			</div>
-			<div id="alert4" style="display:none">
-				<div class="bg" onclick="hide(&quot;alert4&quot;)">&nbsp;</div>
-				<div class="alert_message">
-					Не игнорируйте преподавателя!<br>
-					<embed src="1c.swf" width="300" height="300" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" id="movie4" play="true">
-					<br><input id="b1" value="Ок" onclick="ignore = false;" type="button">
-				</div>
-			</div> -->
 			<div id="dialog" class="dialog" style="margin-left: -25px;">
-				<div class="label" onclick="toggleDialog()">Нажми, чтобы спросить!</div>
+				<div class="label" id ='textOpenOrClose' onclick="toggleDialog()">Нажми, чтобы спросить!</div>
 				<div class="header">История:</div>
 				<div class="history" id="history"></div>
-				<div class="question"><input id="Qdialog" placeholder="Введите вопрос" style="background-image: url(&quot;data:image/svg+xml;utf8,&lt;svg version=\&quot;1.1\&quot; id=\&quot;Layer_1\&quot;  xmlns:sketch=\&quot;http://www.bohemiancoding.com/sketch/ns\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; xmlns:xlink=\&quot;http://www.w3.org/1999/xlink\&quot;  x=\&quot;0px\&quot; y=\&quot;0px\&quot; viewBox=\&quot;0 0 112 112\&quot; enable-background=\&quot;new 0 0 112 112\&quot; xml:space=\&quot;preserve\&quot;&gt; &lt;g id=\&quot;tuts\&quot; sketch:type=\&quot;MSPage\&quot;&gt; &lt;g id=\&quot;mic_ff\&quot; sketch:type=\&quot;MSLayerGroup\&quot;&gt; &lt;g id=\&quot;speechkit_vector-9\&quot; transform=\&quot;translate(39.000000, 32.000000)\&quot;  sketch:type=\&quot;MSShapeGroup\&quot; opacity=\&quot;0.9\&quot;&gt; &lt;path id=\&quot;Shape\&quot; d=\&quot;M17,4c2.8,0,5,2.3,5,5.2v15.6c0,2.9-2.2,5.2-5,5.2s-5-2.3-5-5.2V9.2C12,6.3,14.2,4,17,4 M17,0 c-5,0-9,4.1-9,9.2v15.6c0,5.1,4,9.2,9,9.2s9-4.1,9-9.2V9.2C26,4.1,22,0,17,0L17,0z\&quot;/&gt; &lt;path id=\&quot;Shape_1_\&quot;  d=\&quot;M34,23v1.1C34,34,26.4,42,17,42S0,34,0,24.1V23h4v0.1C4,31.3,9.8,38,17,38s13-6.7,13-14.9V23H34z\&quot;/&gt; &lt;rect id=\&quot;Rectangle-311\&quot; x=\&quot;15\&quot; y=\&quot;41\&quot; width=\&quot;4\&quot; height=\&quot;10\&quot;/&gt; &lt;/g&gt; &lt;/g&gt; &lt;/g&gt; &lt;/svg&gt;&quot;); background-repeat: no-repeat; background-position: right center; cursor: text;"><br><button onclick="ask(&quot;Qdialog&quot;)">Спросить</button></div>
+				<div class="question"><input id="Qdialog" placeholder="Введите вопрос"><br>
+					<div id="commBtn">
+						<button id="buttonAsk" onclick="ask(&quot;Qdialog&quot;)">Спросить</button>
+						<!-- <button id="buttonSpeakAsk" onclick="addSpeak()">S</button> -->
+						<!-- <button id="buttonSpeakAskOff" onclick="delSpeak()">D</button>					 -->
+						<button id="buttonSpeakOnOff" onclick="speak()"><img src="images/speak.png" id="speakPNG"></button>					
+													  
+							    
+							  
+	
+
+					</div>
+				</div>
 			</div>
-<!-- 			<div id="imgalert" style="display:none">
-				<div class="bg" onclick="hide(&quot;imgalert&quot;)">&nbsp;</div>
-				<img id="img_in_alert" src="http://distrib.belstu.by/active+dialog/w1.html">
-			</div> -->
+			<script type="text/javascript">
+
+			</script>
+
 
 		<!-- Конец модуля -->
 

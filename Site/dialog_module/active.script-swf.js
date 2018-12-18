@@ -1,155 +1,178 @@
-﻿//текст сообщений
-var message1="Вы слишком долго смотрите текущую страницу. Что-нибудь не понятно?<br>"+
-"<embed src='1.swf' width='300' height='300' type='application/x-shockwave-flash' pluginspage='http://www.macromedia.com/go/getflashplayer' id='movie1' play='true'/><br><input id='Q1' placeholder='Введите вопрос'/><br>"+
-"<button onclick='ask(\"Q1\")'>Спросить</button>";
+﻿
+$(document).ready(function(){
+	$('#Qdialog').keypress(function(e){
+		if(e.keyCode==13)
+			ask("Qdialog");
+		});
+});
 
-var message2="Вы слишком быстро листаете страницы. Что-нибудь не понятно?<br>"+
-"<embed src='1a.swf' width='300' height='300' type='application/x-shockwave-flash' pluginspage='http://www.macromedia.com/go/getflashplayer' id='movie2' play='true'/><br><input id='Q2' placeholder='Введите вопрос'/><br>"+
-"<button onclick='ask(\"Q2\")'>Спросить</button>";
-
-var message3="Вы вернулись на ту страницу, которую недавно читали. Что-нибудь ищете?<br>"+
-"<embed src='1b.swf' width='300' height='300' type='application/x-shockwave-flash' pluginspage='http://www.macromedia.com/go/getflashplayer' id='movie3' play='true'/><br><input id='Q3' placeholder='Введите вопрос'/><br>"+	
-"<button onclick='ask(\"Q3\")'>Спросить</button>";
-
-var message4="Не игнорируйте преподавателя!<br>"+
-"<embed src='1c.swf' width='300' height='300' type='application/x-shockwave-flash' pluginspage='http://www.macromedia.com/go/getflashplayer' id='movie4' play='true'/><br>"+
 //"<input /><br>"+	
 //"<br><button>Спросить</button>";
-"<input id='b1' value='Ок' onclick='ignore = false;' type='button'/>"
+// "<input id='b1' value='Ок' onclick='ignore = false;' type='button'/>"
 
 //таймер
-var timer;
+// var timer;
 //время до появления медального окна 1, зависящее от размера страницы
-var timeout;
-var countignore = 0;
-var ignore = true;
+// var timeout;
+// var countignore = 0;
+//var ignore = true;
 var dialogOn = false;
 //подготовка активной среды (создание окон)
 
 function prepare_environment(){
-	//окна активной среды
-	timeout=document.body.innerHTML.length;
-	//alert("prepare_environment");
-	document.body.innerHTML+="<div id='alert1' style='display:none'>"+
-		"<div class='bg' onclick='hide(\"alert1\")'>&nbsp;</div>"+
-		"<div class='alert_message'>"+message1+"</div>"+
-	"</div>";
-	document.body.innerHTML+="<div id='alert2' style='display:none'>"+
-		"<div class='bg' onclick='hide(\"alert2\")'>&nbsp;</div>"+
-		"<div class='alert_message'>"+message2+"</div>"+
-	"</div>";
-	document.body.innerHTML+="<div id='alert3' style='display:none'>"+
-		"<div class='bg' onclick='hide(\"alert3\")'>&nbsp;</div>"+
-		"<div class='alert_message'>"+message3+"</div>"+
-	"</div>";
-	document.body.innerHTML+="<div id='alert4' style='display:none'>"+
-		"<div class='bg' onclick='hide(\"alert4\")'>&nbsp;</div>"+
-		"<div class='alert_message'>"+message4+"</div>"+
-	"</div>";
-	//диалоговый модуль
-	document.body.innerHTML+="<div id='dialog' class='dialog' style='margin-left:-25px;'>"+
-		"<div class='label' onclick='toggleDialog()'>Нажми, чтобы спросить!</div>"+
-		"<div class='header'>История:</div>"+
-		"<div class='history' id='history'></div>"+
-		"<div class='question'><input id='Qdialog' placeholder='Введите вопрос'/><br>"+
-			"<button onclick='ask(\"Qdialog\")'>Спросить</button>"
-		"</div>"+
-	"</div>";
-	//крупный план изображений
-	document.body.innerHTML+="<div id='imgalert'  style='display:none'>"+
-		"<div class='bg' onclick='hide(\"imgalert\")'>&nbsp;</div>"+
-		"<img id='img_in_alert' src='' />"+
-	"</div>";
+	
 	//РАСПОЗНАВАНИЕ РЕЧИ
 	//поле с распознаванием речи
 	// Задаем API-ключ
 	window.ya.speechkit.settings.apikey = '5c6d6536-b453-4589-9bc7-f16c7a795106';
 	// Добавление элемента управления "Поле для голосового ввода".
 	
-	// var textline = new ya.speechkit.Textline(
-	// 	'Qdialog', {
-	// 		onInputFinished: function(text) {
-	// 		ask("Qdialog");
-	// 	  }
-	// 	});
+	var textline = new ya.speechkit.Textline(
+		'Qdialog', {
+			onInputFinished: function(text) {
+			ask("Qdialog");
+		  }
+		});
 	
 	//КОНЕЦ РАСПОЗНАВАНИЯ РЕЧИ
 	
 	//привязка окон активной среды с событиями
 	//показ модального окна 1 через интервал времени, зависящий от размера страницы
-	// timer=setInterval(alert_over_time, timeout);
+	 // timer=setInterval(alert_over_time, timeout);
 	//alert("До появления окна осталось "+timeout+"мс");
 	
-	try{
-		//открытие журналов посещенных адресов и дат посещения:
-		//попытка использования массива адресов открытых страниц из локального хранилища
-		var URLlog=JSON.parse(localStorage.URLlog);
-		//удаление адресов из начала массива, пока в массиве не останется 5 адресов
-		while(URLlog.length>5) URLlog.shift(0);
-		//попытка использоваения массива дат открытия страниц из локального хранилища
-		var log=JSON.parse(localStorage.log);
-		//удаление дат из начала массива, пока в массиве не останется 5 дат
-		while(log.length>5) log.shift(0);
-		//проверка на необходимость срабатывания реакций:
-		//только если сделан переход со страницы на страницу (не обновление страницы)
-		if(location.href!=URLlog[URLlog.length-1]){
-			//если сделан переход на одну из последних пяти посещенных страниц, 
-			//очищаем массив и показываем модальное окно 3
-			if(URLlog.indexOf(location.href)!==-1){
-				while(URLlog.length>0) URLlog.shift(0);//очистка массива адресов
-				alert_for_back();
-			}
-			//только если не возникла реакция возврата на предыдущий адрес 
-			//проверяем необходимость реакции на быстрые переходы:
-			else{
-				//если сделано 5 переходов меньше чем за минуту -
-				//очищаем массив и показываем модальное окно 2
-				if(log.length>=5 &&  ((new Date())-Date.parse(log[0]))<60000){
-					while(log.length>0) log.shift(0);//очистка массива дат
-					alert_for_speed();
-				}
-			}
-			//в любом случае, независимо от срабатывания реакций, при переходе со страницы на страницу:
-			URLlog.push(location.href);	//запись адреса текущей страницы в массив
-			log.push(new Date());		//запись даты перехода в массив
-		}
-	}
-	catch(e){
-		var URLlog=new Array();	//инициализация массива адресов открытых страниц
-		var log=new Array();	//инициализация массива дат открытия страниц
-	}
+	// try{
+	// 	//открытие журналов посещенных адресов и дат посещения:
+	// 	//попытка использования массива адресов открытых страниц из локального хранилища
+	// 	var URLlog=JSON.parse(localStorage.URLlog);
+	// 	//удаление адресов из начала массива, пока в массиве не останется 5 адресов
+	// 	while(URLlog.length>5) URLlog.shift(0);
+	// 	//попытка использоваения массива дат открытия страниц из локального хранилища
+	// 	var log=JSON.parse(localStorage.log);
+	// 	//удаление дат из начала массива, пока в массиве не останется 5 дат
+	// 	while(log.length>5) log.shift(0);
+	// 	//проверка на необходимость срабатывания реакций:
+	// 	//только если сделан переход со страницы на страницу (не обновление страницы)
+	// 	if(location.href!=URLlog[URLlog.length-1]){
+	// 		//если сделан переход на одну из последних пяти посещенных страниц, 
+	// 		//очищаем массив и показываем модальное окно 3
+	// 		if(URLlog.indexOf(location.href)!==-1){
+	// 			while(URLlog.length>0) URLlog.shift(0);//очистка массива адресов
+	// 			alert_for_back();
+	// 		}
+	// 		//только если не возникла реакция возврата на предыдущий адрес 
+	// 		//проверяем необходимость реакции на быстрые переходы:
+	// 		else{
+	// 			//если сделано 5 переходов меньше чем за минуту -
+	// 			//очищаем массив и показываем модальное окно 2
+	// 			if(log.length>=5 &&  ((new Date())-Date.parse(log[0]))<60000){
+	// 				while(log.length>0) log.shift(0);//очистка массива дат
+	// 				alert_for_speed();
+	// 			}
+	// 		}
+	// 		//в любом случае, независимо от срабатывания реакций, при переходе со страницы на страницу:
+	// 		URLlog.push(location.href);	//запись адреса текущей страницы в массив
+	// 		log.push(new Date());		//запись даты перехода в массив
+	// 	}
+	// }
+	// catch(e){
+	// 	var URLlog=new Array();	//инициализация массива адресов открытых страниц
+	// 	var log=new Array();	//инициализация массива дат открытия страниц
+	// }
 	//запись массива адресов в локальное хранилище в формате JSON
-	localStorage.URLlog=JSON.stringify(URLlog);
+	// localStorage.URLlog=JSON.stringify(URLlog);
 	//запись массива дат в локальное хранилище в формате JSON
-	localStorage.log=JSON.stringify(log);
+	// localStorage.log=JSON.stringify(log);
 	
 }
+
+var flagSpeak = false;
+function speak(){
+	if (!flagSpeak){
+		addSpeak();
+		flagSpeak = true;
+		// document.getElementById('buttonSpeakOnOff').value = 'Speak now';
+		document.getElementById('speakPNG').src = 'images/mute.png';
+	}
+	else {
+		delSpeak();
+		flagSpeak = false;
+		// document.getElementById('buttonSpeakOnOff').value = 'Dont';
+		document.getElementById('speakPNG').src = 'images/speak.png';
+		// document.getElementById('speakPNG').value = 'Dont';
+
+	}
+
+}
+
+function addSpeak(){
+	window.ya.speechkit.settings.apikey = '5c6d6536-b453-4589-9bc7-f16c7a795106';
+	// Добавление элемента управления "Поле для голосового ввода".
+	
+	var textline = new ya.speechkit.Textline(
+		'Qdialog', {
+			onInputFinished: function(text) {
+			ask("Qdialog");
+		  }
+		});
+
+	document.getElementById("Qdialog").placeholder = 'Нажмите тут, и говорите';
+}
+
+function delSpeak(){
+
+	//window.ya.speechkit.stop();
+	// window.ya.speechkit.abort();
+	// window.ya.speechkit.dict.stop();
+	// window.ya.speechkit.dict.abort();
+	// window.ya.speechkit.pause();
+
+	// window.ya.speechkit.close;
+	// window.ya.speechkit.finish;
+	// window.ya.speechkit.stop();
+	// window.ya.speechkit.abort();
+	
+	delete window.ya.speechkit.settings.apikey;
+
+	delete window.ya.speechkit.textline;
+
+	document.getElementById("Qdialog").style.backgroundImage = '';
+	document.getElementById("Qdialog").onmousemove = function () {		
+	};
+
+	document.getElementById("Qdialog").onmousedown = function () {
+	};
+	document.getElementById("Qdialog").placeholder = 'Введите вопрос';
+
+
+ 
+}
 //запуск подготовки среды при загрузке окна
-// window.onload = function(){prepare_environment();};
+ //window.onload = function(){prepare_environment();};
 //скрытие сообщений при щелчке на фон
-function hide(elem_id){
-	$("#"+elem_id).css({"display":"none"});
-	timer=setInterval(alert_over_time, timeout);
-if(ignore)
-{
-try{
-	var countignore = localStorage.getItem("countignore");
-	//alert(countignore+"before");
-	}
-catch(e){
-	localStorage.setItem("countignore", countignore);
+// function hide(elem_id){
+// 	$("#"+elem_id).css({"display":"none"});
+// 	timer=setInterval(alert_over_time, timeout);
+// if(ignore)
+// {
+// try{
+// 	var countignore = localStorage.getItem("countignore");
+// 	//alert(countignore+"before");
+// 	}
+// catch(e){
+// 	localStorage.setItem("countignore", countignore);
 
 
-	}
-countignore++;
-localStorage.setItem("countignore", countignore);
-//alert(countignore+"перед вызовом");
-if(countignore>2) alert_for_ignore();
-}
-else localStorage.setItem("countignore", 0);
+// 	}
+// countignore++;
+// localStorage.setItem("countignore", countignore);
+// //alert(countignore+"перед вызовом");
+// if(countignore>2) alert_for_ignore();
+// }
+// else localStorage.setItem("countignore", 0);
 
-ignore = true;
-}
+// ignore = true;
+// }
 
 //показ сообщений
 
@@ -177,14 +200,17 @@ function toggleDialog(){
 	//закрытие
 	if(dialogOn){
 		$("#dialog").animate({"margin-left":"-25px"}, 1000, function() {});
+		$("#textOpenOrClose").text("Нажми, чтобы спросить!");
 		dialogOn=false;
-		// timer=setInterval(alert_over_time, timeout);
+		 // timer=setInterval(alert_over_time, timeout);
 	}
 	//открытие
 	else{
-		$("#dialog").animate({"margin-left":"-400px"}, 1000, function() {});
+		$("#dialog").animate({"margin-left":"-365px"}, 1000, function() {});
+		$("#textOpenOrClose").text("Нажми, чтобы скрыть диалоговый модуль!");
+
 		dialogOn=true;
-		clearInterval(timer);
+		// clearInterval(timer);
 	}
 }
 
@@ -229,17 +255,19 @@ var knowledge = [
     ["самой легкой", "планета является", "  Меркурий (в солнечной системе)"],
     ["самой горячей", "планета является", "  Венера (в солнечной системе)"],
     ["самой холодной", "планета является", "  Уран (в солнечной системе)"],
-    ["небесная механика ", "называется", "  раздел астрономии, применяющий законы механики для изучения и вычисления движения небесных тел, в первую очередь Солнечной системы, и вызванных этим явлений"],
     ["ядро солнца  ", "нагревается", "  до 15.7 млн. Келвинов"],
     ["видимая поверхность солнца  ", "нагревается", "  до  5778 Келвинов"],
-    ["большие космические объекты  ", "являются", "  планеты, звёзды и галактики имеют огромную массу и, следовательно, создают значительные гравитационные поля"],
     ["первый закон кеплера  ", "утверждает", "  что планеты Солнечной системы движутся по эллипсам, в одном из фокусов которого находится Солнце"],
     ["солнечной системой	", "является", "  планетной системой, включающей в себя все естественные космические объекты, обращающиеся вокруг Солнца: планеты и их спутники, карликовые планеты и их спутники, а также малые тела - астероиды, кометы, метеороиды, космическую пыль"],
-    ["солнечная система	", "начситывает", "  8 планет"],
+    
     ["закон инерции ньютона	", "говорит", "  что внешняя сила необходима только для приведения тела в движение, для его остановки или для изменения направления и величины его скорости"],
     ["второй закон кеплера", "утверждает", " что линия, соединяющая Солнце и планету (или компоненты двойной звезды), за равные интервалы времени «заметает» равные площади"],
     ["закон противодействия	", "утверждает", " что взаимодействующие тела прилагают друг к другу равные по величине, но противоположно направленные силы"],
-    ["гравитационная постоянная", "равняется", "6.67408 × 10 в -11 м кубических на килограмм в -1 на секунд в -2"]
+    ["гравитационная постоянная", "равняется", "6.67408 × 10 в -11 м кубических на килограмм в -1 на секунд в -2"],
+    ["солнечная система", "-это", "планетная система, включающая в себя все естественные космические объекты, обращающиеся вокруг Солнца: планеты и их спутники, карликовые планеты и их спутники, а также малые тела - астероиды, кометы, метеороиды, космическую пыль"],
+    ["солнечная система	", "начситывает", "  8 планет"],
+    ["небесная механика", "-это", "раздел астрономии, применяющий законы механики для изучения и вычисления движения небесных тел, в первую очередь Солнечной системы, и вызванных этим явлений "],
+    ["большие космические объекты", "-это", "планеты, звёзды и галактики имеют огромную массу и, следовательно, создают значительные гравитационные поля"]
 
 	];
 
@@ -247,7 +275,7 @@ var knowledge = [
 function ask(questionInput){
 	var question=document.getElementById(questionInput).value.trim();
 	//выдвижение диалогового модуля
-	$("#dialog").animate({"margin-left":"-400px"}, 1000, function() {});
+	$("#dialog").animate({"margin-left":"-365px"}, 1000, function() {});
 	dialogOn=true;
 	//вывод вопроса
 	//document.getElementById("history").innerHTML+="<div class='question'>"+question+"</div>";

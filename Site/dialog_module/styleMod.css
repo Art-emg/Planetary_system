@@ -6,27 +6,7 @@ input{
 	width:100%;
 	border-radius:10px;
 	padding:2px 10px;
-}
-.main{
-	position: absolute; 
-	left: 50%; 
-	margin-left: -300px;
-	padding: 10px; 
-	background-color: #339933; 
-	width: 400px; 
-	text-align: center; 
-	border-radius:10px;
-	overflow:hidden;
 
-	top:20px;
-	text-align:left;
-	font-size:14px;
-}
-
-.heder_text{
-	font-size:20px;
-	font-weight:bold;
-	text-align:center;
 }
 /*оформление модальных окон*/
 .bg{
@@ -86,7 +66,7 @@ input{
 	text-align:center;
 	overflow:hidden;
 	display:inline-block;
-	margin-left:-56%;
+	margin-left:-58%;
 	margin-top:50%;
 	cursor:pointer;
 }
@@ -102,13 +82,48 @@ input{
 	overflow-y:scroll;
 }
 
-.dialog input, .dialog button, .dialog .history{
+.dialog input, .dialog .history{
 	margin:2px 25px;
 	width:85%;
 	border:1px #666 solid;
 	border-radius: 5px;
 	font-size:14px;
 }
+.dialog #commBtn{
+	margin:2px 25px;
+	width:85%;
+	font-size:14px;
+}
+
+.dialog #buttonAsk {
+	margin: 0;
+	width:87%;
+	/*width:65%;*/
+	border-radius: 5px;
+
+}
+
+
+.dialog #buttonSpeakAsk #buttonAskOff {
+	margin: 0;
+	width:10%;
+}
+
+.dialog #buttonSpeakOnOff {
+	margin: 0;
+	width:11%;
+	background-color: white;
+	/*border-width: 1px;*/
+	border-radius: 5px;
+	background-color: #D4D4D4;
+	box-shadow: 3px;
+}
+#speakPNG{
+	width: 17px;
+	margin: 0;
+	padding: 0;
+}
+
 .dialog .history .question, .dialog .history .answer{
 	margin:5px;
 	width:78%;
@@ -151,3 +166,7 @@ input{
 }
 .smoll_letter{ vertical-align:sub; font-size:12px;}
 .big_letter{ vertical-align:super; font-size:14px;}
+
+
+
+

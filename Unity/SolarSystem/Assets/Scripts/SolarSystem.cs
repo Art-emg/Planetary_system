@@ -15,7 +15,6 @@ public class SolarSystem : MonoBehaviour {
     public Rigidbody uranus;
     public Rigidbody neptune;
 
-
     public float gravityConstOrder = -11.0f;
     public float gravityConstValue = 6.67408f;
 
@@ -30,7 +29,9 @@ public class SolarSystem : MonoBehaviour {
 
     public float TimeSpeed= 1f;//
 
-    protected static List<CelestialBody> celestialBodies = new List<CelestialBody>();
+    public Dictionary<string, string> EngRusName = new Dictionary<string, string>(9);
+    
+    public List<CelestialBody> celestialBodies = new List<CelestialBody>();
 
 	protected List<Vector3> defaultPositions;
 	protected List<Quaternion> defaultRotations;
@@ -39,7 +40,18 @@ public class SolarSystem : MonoBehaviour {
 	void Awake()
 	{
         celestialBodies = new List<CelestialBody>(FindObjectsOfType<CelestialBody>());
-	}
+
+        EngRusName.Add("Sun", "Солнце");
+        EngRusName.Add("Mercury", "Меркурий");
+        EngRusName.Add("Venus", "Венера");
+        EngRusName.Add("Earth", "Земля");
+        EngRusName.Add("Mars", "Марс");
+        EngRusName.Add("Jupiter", "Юпитер");
+        EngRusName.Add("Saturn", "Сатурн");
+        EngRusName.Add("Uranus", "Уран");
+        EngRusName.Add("Neptune", "Нептун");
+
+    }
 	void Start()
 	{
 		SaveDefaults();

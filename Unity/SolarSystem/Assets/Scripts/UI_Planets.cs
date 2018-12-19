@@ -4,11 +4,18 @@ using UnityEngine.UI;
 public class UI_Planets : MonoBehaviour {
 
     public SolarSystem solarSystem;
+    public CameraRotateAround camera;
+    public Text targetName;
 
     public InputField sunMassInput, mercuryMassInput, 
         venusMassInput, earthMassInput, marsMassInput, 
         jupiterMassInput, saturnMassInput, uranusMassInput, neptuneMassInput;
 
+    public void SetTargetObject(GameObject game)
+    {
+        camera.target = game.transform;
+        targetName.text = solarSystem.EngRusName[camera.target.name];
+    }
 
     public void SetMass_Default()
     {

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class CameraRotateAround : MonoBehaviour {
 
     public Transform target;
+    public SolarSystem solarSystem;
 	public Vector3 offset;
 	public float sensitivity = 3; // чувствительность мышки
 	public float limit = 80;     // ограничение вращения по Y
@@ -19,6 +20,7 @@ public class CameraRotateAround : MonoBehaviour {
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
+ 
 
     void Start () 
 	{
@@ -66,7 +68,7 @@ public class CameraRotateAround : MonoBehaviour {
             if (Physics.Raycast(ray, out hit))
             {
                 target = hit.transform;
-                camTargetName.text = target.name;
+                camTargetName.text = solarSystem.EngRusName[target.name];
 
             }
         }

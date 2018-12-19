@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraRotateAround.cs" />
      <Compile Include="Assets\Scripts\CelestialBody.cs" />
+     <Compile Include="Assets\Scripts\Control.cs" />
      <Compile Include="Assets\Scripts\SolarSystem.cs" />
      <Compile Include="Assets\Scripts\UI_Camera.cs" />
      <Compile Include="Assets\Scripts\UI_Planets.cs" />

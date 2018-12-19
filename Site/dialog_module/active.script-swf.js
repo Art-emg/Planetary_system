@@ -394,61 +394,77 @@ function getAnswer(question)
         if (ending >= 0)
         {
 			//---ТОЧНЫЙ ПОИСК---
-			
-			//---ПОИСК С ПОМОЩЬЮ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ---
-            //замена псевдоокончания на набор возможных окончаний
-            words[i] = words[i].substring(0, words[i].length -
-                endings[ending][0].length) + endings[ending][1];
-            //создание регулярного выражения для поиска по сказуемому из вопроса
-            var predicate = new RegExp(words[i]);
-            //для кратких прилагательных захватываем следующее слово
-            if (endings[ending][0] == endings[ending][1])
-            {
-                predicate = new RegExp(words[i] + " " + words[i + 1]);
-                i++;
-            }
 			var subject_array = words.slice(i + 1);
 			var subject_text = subject_array.join(" ");
-            //создание регулярного выражения для поиска по подлежащему из вопроса
-			//из слов подлежащего выбрасываем короткие предлоги (периметр у квадрата = периметр квадрата)
-			for (var j = 0; j < subject_array.length; j++){
-				if(subject_array[j].length < 3){
-					subject_array.splice(j);
-					j--;
+			for (var j = 0; j < knowledge.length; j++) 
+				if ((words[i]==knowledge[j][1] || // точное совпадение сказуемого
+					words[i].substring(0, words[i].length - endings[ending][0].length) + 
+					endings[ending][1]==knowledge[j][1]) && //совпадение сказуемого с подстановкой (такое->- это)
+					(subject_text==knowledge[j][0]) || (subject_text==knowledge[j][2])) {//совпадение подлежащего
+					//создание простого предложения из семантической связи
+					answer+=big1(knowledge[j][0] + " " +
+						knowledge[j][1] + " " + knowledge[j][2] + ". ");
+					result = true;
+					//alert("точное");
 				}
-			}
-			var subject_string = subject_array.join(".*");
-			//только если в послежащем больше трех символов
-			if (subject_string.length>3)
-			{
-				var subject = new RegExp(".*" +
-					subject_string +
-					".*");
-				//поиск совпадений с шаблонами среди связей семантической сети
-				for (var j = 0; j < knowledge.length; j++)
+			if (result == false) {
+				//---ПОИСК С ПОМОЩЬЮ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ---
+				//замена псевдоокончания на набор возможных окончаний
+				words[i] = words[i].substring(0, words[i].length -
+					endings[ending][0].length) + endings[ending][1];
+				//создание регулярного выражения для поиска по сказуемому из вопроса
+				var predicate = new RegExp(words[i]);
+				//для кратких прилагательных захватываем следующее слово
+				if (endings[ending][0] == endings[ending][1])
 				{
-					if (predicate.test(knowledge[j][1]) &&
-						(subject.test(knowledge[j][0]) ||
-							subject.test(knowledge[j][2])))
-					{
-						//создание простого предложения из семантической связи
-						answer+=big1(knowledge[j][0] + " " +
-							knowledge[j][1] + " " + knowledge[j][2] + ". ");
-						result = true;
+					predicate = new RegExp(words[i] + " " + words[i + 1]);
+					i++;
+				}
+				var subject_array = words.slice(i + 1);
+				var subject_text = subject_array.join(" ");
+				//создание регулярного выражения для поиска по подлежащему из вопроса
+				//из слов подлежащего выбрасываем короткие предлоги (периметр у квадрата = периметр квадрата)
+				for (var j = 0; j < subject_array.length; j++){
+					if(subject_array[j].length < 3){
+						subject_array.splice(j);
+						j--;
 					}
 				}
-				//если совпадений с двумя шаблонами нет,
-				if (result == false){
-					//поиск совпадений только с шаблоном подлежащего
+				var subject_string = subject_array.join(".*");
+				//только если в послежащем больше трех символов
+				if (subject_string.length>3)
+				{
+					var subject = new RegExp(".*" +
+						subject_string +
+						".*");
+					//поиск совпадений с шаблонами среди связей семантической сети
 					for (var j = 0; j < knowledge.length; j++)
 					{
-						if ((subject.test(knowledge[j][0]) ||
+						if (predicate.test(knowledge[j][1]) &&
+							(subject.test(knowledge[j][0]) ||
 								subject.test(knowledge[j][2])))
 						{
 							//создание простого предложения из семантической связи
 							answer+=big1(knowledge[j][0] + " " +
 								knowledge[j][1] + " " + knowledge[j][2] + ". ");
 							result = true;
+							//alert("регулярки для сказуемого и подлежащего");
+						}
+					}
+					//если совпадений с двумя шаблонами нет,
+					if (result == false){
+						//поиск совпадений только с шаблоном подлежащего
+						for (var j = 0; j < knowledge.length; j++)
+						{
+							if ((subject.test(knowledge[j][0]) ||
+									subject.test(knowledge[j][2])))
+							{
+								//создание простого предложения из семантической связи
+								answer+=big1(knowledge[j][0] + " " +
+									knowledge[j][1] + " " + knowledge[j][2] + ". ");
+								result = true;
+								//alert("регулярка только для подлежащего");
+							}
 						}
 					}
 				}

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class CelestialBody : MonoBehaviour {
 
 	private new Rigidbody rigidbody;
-    public string name;
+    public string namePlanet;
 	public Rigidbody Rigidbody
 	{
 		get
@@ -20,7 +20,4 @@ public class CelestialBody : MonoBehaviour {
 		rigidbody = GetComponent<Rigidbody>();
 	}
 
-	void FixedUpdate () {
-
-    }
 }

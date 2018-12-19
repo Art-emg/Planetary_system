@@ -9,9 +9,10 @@ public class UI_SolarSystem : MonoBehaviour {
     public SolarSystem solarSystem;
     public CameraRotateAround camera;
     public Text targetName;
-    public InputField mp;
     public Text SpeedValue;
     public Slider slider;
+
+    
 
     public InputField GravitiConstValueInput, GravityConstOrderInput;
 
@@ -50,15 +51,16 @@ public class UI_SolarSystem : MonoBehaviour {
         else Time.timeScale = slider.value;
     }
 
+
     public void Start()
     {
+        targetName.text = solarSystem.EngRusName[camera.target.name];
         SpeedValue.text = "Скорость системы: x" + slider.value.ToString();
 
         GravitiConstValueInput.text = solarSystem.gravityConstValue.ToString();
         GravityConstOrderInput.text = solarSystem.gravityConstOrder.ToString();
+
+
     }
 
-	void FixedUpdate () {
-        targetName.text = camera.target.name;
-	}
 }

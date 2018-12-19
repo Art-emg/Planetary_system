@@ -334,3 +334,6 @@ D:\Dropbox\Planetary_system\Unity\SolarSystem\obj\Debug\Assembly-CSharp.csproj.C
 D:\Dropbox\Planetary_system\Unity\SolarSystem\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\Dropbox\Planetary_system\Unity\SolarSystem\obj\Debug\Assembly-CSharp.dll
 D:\Dropbox\Planetary_system\Unity\SolarSystem\obj\Debug\Assembly-CSharp.pdb
+D:\Dropbox\Planetary_system\Unity\SolarSystem\Temp\bin\Debug\UnityEngine.SpatialTrackingModule.dll
+D:\Dropbox\Planetary_system\Unity\SolarSystem\Temp\bin\Debug\UnityEngine.WebGLModule.dll
+D:\Dropbox\Planetary_system\Unity\SolarSystem\Temp\bin\Debug\UnityEngine.SpatialTrackingModule.xml

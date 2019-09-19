@@ -36,70 +36,24 @@ function prepare_environment(){
 	
 	//КОНЕЦ РАСПОЗНАВАНИЯ РЕЧИ
 	
-	//привязка окон активной среды с событиями
-	//показ модального окна 1 через интервал времени, зависящий от размера страницы
-	 // timer=setInterval(alert_over_time, timeout);
-	//alert("До появления окна осталось "+timeout+"мс");
-	
-	// try{
-	// 	//открытие журналов посещенных адресов и дат посещения:
-	// 	//попытка использования массива адресов открытых страниц из локального хранилища
-	// 	var URLlog=JSON.parse(localStorage.URLlog);
-	// 	//удаление адресов из начала массива, пока в массиве не останется 5 адресов
-	// 	while(URLlog.length>5) URLlog.shift(0);
-	// 	//попытка использоваения массива дат открытия страниц из локального хранилища
-	// 	var log=JSON.parse(localStorage.log);
-	// 	//удаление дат из начала массива, пока в массиве не останется 5 дат
-	// 	while(log.length>5) log.shift(0);
-	// 	//проверка на необходимость срабатывания реакций:
-	// 	//только если сделан переход со страницы на страницу (не обновление страницы)
-	// 	if(location.href!=URLlog[URLlog.length-1]){
-	// 		//если сделан переход на одну из последних пяти посещенных страниц, 
-	// 		//очищаем массив и показываем модальное окно 3
-	// 		if(URLlog.indexOf(location.href)!==-1){
-	// 			while(URLlog.length>0) URLlog.shift(0);//очистка массива адресов
-	// 			alert_for_back();
-	// 		}
-	// 		//только если не возникла реакция возврата на предыдущий адрес 
-	// 		//проверяем необходимость реакции на быстрые переходы:
-	// 		else{
-	// 			//если сделано 5 переходов меньше чем за минуту -
-	// 			//очищаем массив и показываем модальное окно 2
-	// 			if(log.length>=5 &&  ((new Date())-Date.parse(log[0]))<60000){
-	// 				while(log.length>0) log.shift(0);//очистка массива дат
-	// 				alert_for_speed();
-	// 			}
-	// 		}
-	// 		//в любом случае, независимо от срабатывания реакций, при переходе со страницы на страницу:
-	// 		URLlog.push(location.href);	//запись адреса текущей страницы в массив
-	// 		log.push(new Date());		//запись даты перехода в массив
-	// 	}
-	// }
-	// catch(e){
-	// 	var URLlog=new Array();	//инициализация массива адресов открытых страниц
-	// 	var log=new Array();	//инициализация массива дат открытия страниц
-	// }
-	//запись массива адресов в локальное хранилище в формате JSON
-	// localStorage.URLlog=JSON.stringify(URLlog);
-	//запись массива дат в локальное хранилище в формате JSON
-	// localStorage.log=JSON.stringify(log);
 	
 }
+
+
+
+var textline;
 
 var flagSpeak = false;
 function speak(){
 	if (!flagSpeak){
 		addSpeak();
 		flagSpeak = true;
-		// document.getElementById('buttonSpeakOnOff').value = 'Speak now';
 		document.getElementById('speakPNG').src = 'images/mute.png';
 	}
 	else {
 		delSpeak();
 		flagSpeak = false;
-		// document.getElementById('buttonSpeakOnOff').value = 'Dont';
 		document.getElementById('speakPNG').src = 'images/speak.png';
-		// document.getElementById('speakPNG').value = 'Dont';
 
 	}
 
@@ -109,7 +63,7 @@ function addSpeak(){
 	window.ya.speechkit.settings.apikey = '5c6d6536-b453-4589-9bc7-f16c7a795106';
 	// Добавление элемента управления "Поле для голосового ввода".
 	
-	var textline = new ya.speechkit.Textline(
+	textline = new ya.speechkit.Textline(
 		'Qdialog', {
 			onInputFinished: function(text) {
 			ask("Qdialog");
@@ -120,33 +74,26 @@ function addSpeak(){
 }
 
 function delSpeak(){
+	window.ya.speechkit.Recognizer.finish;
 
-	//window.ya.speechkit.stop();
-	// window.ya.speechkit.abort();
-	// window.ya.speechkit.dict.stop();
-	// window.ya.speechkit.dict.abort();
-	// window.ya.speechkit.pause();
-
-	// window.ya.speechkit.close;
-	// window.ya.speechkit.finish;
-	// window.ya.speechkit.stop();
-	// window.ya.speechkit.abort();
+	textline.destroy;
+	textline.stop;
+	textline.abort;
+	textline.pause;
+	textline.paused;
+	textline.close;
+	textline.finish;
+	textline.recording = false;
 	
 	delete window.ya.speechkit.settings.apikey;
-
 	delete window.ya.speechkit.textline;
 
 	document.getElementById("Qdialog").style.backgroundImage = '';
-	document.getElementById("Qdialog").onmousemove = function () {		
-	};
-
-	document.getElementById("Qdialog").onmousedown = function () {
-	};
+	document.getElementById("Qdialog").onmousemove = function () {};
+	document.getElementById("Qdialog").onmousedown = function () {};
 	document.getElementById("Qdialog").placeholder = 'Введите вопрос';
-
-
- 
 }
+
 //запуск подготовки среды при загрузке окна
  //window.onload = function(){prepare_environment();};
 //скрытие сообщений при щелчке на фон

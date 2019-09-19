@@ -39,7 +39,15 @@
 		</style>
 
 
-		
+		    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | SolarSystem</title>
+    <link rel="stylesheet" href="buildWebGL/TemplateData/style.css">
+    <script src="buildWebGL/TemplateData/UnityProgress.js"></script>  
+    <script src="buildWebGL/Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "buildWebGL/Build/build.json", {onProgress: UnityProgress});
+    </script>
 	
 		
 	</head>
@@ -47,20 +55,9 @@
 	
 		<div class="header_top">
 			<div class="header_top_inside">
-				<a class="logo_link" href="index.html">
-					<span class="logo_text">Солнечная система</span>
 
-				</a>
-				<div class = "soc-header">
-					<div class="soc-btns-head">
-							<a class="soc-href" href="" target="_blank" >
-								<img class="soc_btn" src="images/vk.png"/>
-							</a>
-							<a class="soc-href" href="" target="_blank">
-								<img class="soc_btn" src="images/inst.png" >
-							</a>
-					</div>
-				</div>
+					<h1 class="logo_text">Солнечная система</h1>
+
 			</div>
 		</div>
 	
@@ -81,13 +78,23 @@
 
 					<h1 id="main_h1" >Симулятор Солнечной системы</h1>
 
+   
+
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer1">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">SolarSystem</div>
+      </div>
+    </div>
+
+   				<br>
+   				<br>
+   				<br>
+					<h3>Также можно скачать Windows .exe версию</h3>
 					<a href="Solar System.rar" download> <button class="btn"><i class="fa fa-download"></i> Скачать<p>Solar System.rar</p></button></a>
 					
-		
-
-					<div class="testing">
-					</div>
-
 
 
 				</div>
@@ -95,7 +102,7 @@
 
 		</div>
 		
-			<div class="footer">
+<div class="footer">
 			<div class="footer_inside">
 				<div class="row">
 					<div class="col-sm">
@@ -129,14 +136,14 @@
 						<H5>Автор проекта</H5>
 						<h6>Гришанович Артём</h6>
 						<div class="soc_footer">
-							<a class="soc-href" href="https://vk.com/gritem" target="_blank" >
+							<a class="soc-href" href="https://vk.com/" target="_blank" >
 								<img class="soc_btn" src="images/vk.png"/>
 							</a>
-							<a class="soc-href" href="https://www.instagram.com/art_emg/" target="_blank">
-								<img class="soc_btn" src="images/inst.png" >
+							<a class="soc-href" href="https://www.instagram.com/" target="_blank">
+								<img class="soc_btn" src="images/inst.png"  >
 							</a>
 						</div>
-						<p>Gmail: g.artyom08@gmail.com</p>
+						<p>Gmail: mail@gmail.com</p>
 					</div>
 				</div>		
 			</div>

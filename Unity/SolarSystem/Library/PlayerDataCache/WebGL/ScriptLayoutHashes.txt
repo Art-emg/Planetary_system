@@ -1,8 +1,8 @@
 WebGL
 PlayerPath?
-D:/Dropbox/Planetary_system/WebGL
+D:/b
 SceneListBegin?
-Assets/Scripts/main.unity
+Assets/main.unity
 SceneListEnd?
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 e07398f15b7cb60bc4f8d04291f58286 Assembly-CSharp.dll:.UI_SolarSystem
@@ -98,6 +98,7 @@ c7dd12c15208b0447e101f80038706df UnityEngine.Timeline.dll:UnityEngine.Timeline.A
 0ddb2c46096a1e59e0dce07886ce4769 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 0ddb2c46096a1e59e0dce07886ce4769 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 64f3a13c1277a7f1324321d93d0ec13b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+2c9c61cac6f603ff4733558df142155b Assembly-CSharp.dll:.Control
 66b3109aa5921cf800bec17926c6adba Unity.TextMeshPro.dll:TMPro.TMP_SubMeshUI
 201273fb4f889724fb090164b7d6c657 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 486cd95c82d8305219c352c06b776e1f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -169,4 +170,3 @@ e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 93307bd34e39d73fd24e00ec39c25a91 Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 3670ea8f4353a649a58a7301b7250376 Assembly-CSharp.dll:.UI_Camera
 835a30fefa8f082c24ce62a1746bd5a6 Assembly-CSharp.dll:.SolarSystem
-2c9c61cac6f603ff4733558df142155b Assembly-CSharp.dll:.Control
